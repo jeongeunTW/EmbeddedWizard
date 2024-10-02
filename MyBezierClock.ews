@@ -1,12 +1,12 @@
 $version 1.0
 
-attr active = BezierClock;
+attr active = BezierClock::Background;
 attr callStackMonitor_Show = false;
 attr codeColSelect = false;
 attr codeFirstPos = <0,0>;
-attr codeInspector = Application::Application.init;
-attr codeSelEnd = <23,0>;
-attr codeSelStart = <23,0>;
+attr codeInspector = BezierClock::Background.OnSetCurrentBackground;
+attr codeSelEnd = <0,5>;
+attr codeSelStart = <0,5>;
 attr connectInspectors = false;
 attr debug_TrackUpdates = false;
 attr extractDoc_ClassOverview = true;
@@ -66,6 +66,25 @@ view class Application::Application
 }
 
 view unit BezierClock
+{
+  attr enableWireMode = false;
+  attr scrollTo = <-7,-7>;
+  attr zoom = 1.0;
+}
+
+view class BezierClock::Background
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeInspector = OnSetCurrentBackground;
+  attr codeSelEnd = <0,5>;
+  attr codeSelStart = <0,5>;
+  attr enableWireMode = false;
+  attr scrollTo = <-48,-77>;
+  attr zoom = 1.0;
+}
+
+view class BezierClock::BezierClock
 {
   attr enableWireMode = false;
   attr scrollTo = <-7,-7>;
