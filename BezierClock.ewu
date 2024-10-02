@@ -207,3 +207,9 @@ resource Resources::Bitmap Orange
   attr bitmapdithering Dithering = Auto;
   attr bitmapmode Mode = Default;
 }
+
+// widget
+note group widget
+{
+  attr Bounds = <30,240,330,440>;
+}

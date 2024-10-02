@@ -4,10 +4,10 @@ $rect <50,80,250,120>
 $output false
 class Background : Core::Group
 {
-  $rect <10,230,210,270>
-  inherited property Bounds = <0,0,300,200>;
+  $rect <840,30,1040,70>
+  inherited property Bounds = <0,0,800,480>;
 
-  $rect <10,390,210,430>
+  $rect <840,110,1040,150>
   inherited method UpdateLayout()
   {
     // Always invoke the inherited method.
@@ -36,7 +36,7 @@ class Background : Core::Group
     */
   }
 
-  $rect <10,350,210,390>
+  $rect <840,70,1040,110>
   inherited method UpdateViewState()
   {
     // Always invoke the inherited method.
@@ -134,35 +134,76 @@ class Background : Core::Group
     */
   }
 
-  // To do:
-  // 
-  // - Adjust the visible size of your component (the thick blue border).
-  // 
-  // - The simplest way to compose the appearance of the component is to use the \
-  // 'Views' and 'Widget Sets' from the Gallery.
-  // 
-  // - To react to touch or keyboard events use the templates from the Gallery folder \
-  // 'Event Handlers'.
-  // 
-  // - To perform transitions (animations) use the templates from the Gallery folder \
-  // 'Effects'.
-  // 
-  // - To implement the interface of the component use the 'Property' template from \
-  // the Gallery folder 'Chora'.
-  // 
-  // - To store values use the 'Variable' and 'Array' templates available in the \
-  // Gallery folder 'Chora'.
-  // 
-  // - To implement behavior use the 'Method' and 'Slot Method' templates available \
-  // in the Gallery folder 'Chora'.
-  // 
-  // - In the method 'UpdateViewState()' you can put code to update the state of \
-  // views enclosed in your component.
-  // 
-  // - In the method 'UpdateLayout()' you can put code to perform sophisticated layout \
-  // calculation for enclosed views.
-  note legend Note1
+  $rect <1050,30,1250,70>
+  property int32 CurrentBackground;
+
+  $rect <1050,70,1250,110>
+  onset CurrentBackground
   {
-    attr Bounds = <220,230,1000,550>;
+    // The value doesn't change - nothing to do.
+    if ( pure CurrentBackground == value )
+      return;
+
+    // Remember the property's new value.
+    pure CurrentBackground = value;
+
+    // TO DO:
+    // 
+    // Now you can handle the alternation of the property.
   }
+
+  $rect <20,20,160,60>
+  object Views::Image Image
+  {
+    preset Bounds = <0,0,800,480>;
+    preset Bitmap = BezierClock::Dark;
+  }
+}
+
+// Screen
+note group Screen
+{
+  attr Bounds = <30,40,330,240>;
+}
+
+// Resource
+note group Note
+{
+  attr Bounds = <350,40,650,240>;
+}
+
+$rect <370,80,570,120>
+$output false
+resource Resources::Bitmap Dark
+{
+  attr bitmapfile FileName = .\Res\Dark.png;
+  attr bitmapformat Format = Native;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapdithering Dithering = Auto;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <370,160,570,200>
+$output false
+resource Resources::Bitmap Blue
+{
+  attr bitmapfile FileName = .\Res\Blue.png;
+  attr bitmapformat Format = Native;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapdithering Dithering = Auto;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <370,120,570,160>
+$output false
+resource Resources::Bitmap Orange
+{
+  attr bitmapfile FileName = .\Res\Orange.png;
+  attr bitmapformat Format = Native;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapdithering Dithering = Auto;
+  attr bitmapmode Mode = Default;
 }
